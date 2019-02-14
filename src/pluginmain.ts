@@ -11,10 +11,9 @@ import * as common from 'trc-httpshim/common'
 
 import * as core from 'trc-core/core'
 
-import * as trcSheet from 'trc-sheet/sheet' 
+import * as trcSheet from 'trc-sheet/sheet'
 import * as trcSheetEx from 'trc-sheet/sheetEx'
 
-import * as gps from 'trc-web/gps'
 import * as plugin from 'trc-web/plugin'
 import * as trchtml from 'trc-web/html'
 
@@ -26,57 +25,90 @@ declare var $: JQueryStatic;
 
 // Provide easy error handle for reporting errors from promises.  Usage:
 //   p.catch(showError);
-declare var showError : (error:any) => void; // error handler defined in index.html
+declare var showError: (error: any) => void; // error handler defined in index.html
 
 export class MyPlugin {
     private _sheet: trcSheet.SheetClient;
-    private _pluginClient : plugin.PluginClient;
-    private _gps : common.IGeoPointProvider;
+    private _pluginClient: plugin.PluginClient;
+    private _opts: plugin.IPluginOptions;
 
-    public static BrowserEntryAsync(
-        auth: plugin.IStart,
-        opts : plugin.IPluginOptions
-    ) : Promise<MyPlugin> {
-        
-        // You can set gpsTracker null if you don't need GPS. 
-        var gpsTracker = new gps.GpsTracker(); // Only works in browser
-        var pluginClient = new plugin.PluginClient(auth,opts, gpsTracker);
-
-        // Do any IO here...
-        
-        var throwError =false; // $$$ remove this
-        
-        var plugin2 = new MyPlugin(pluginClient);
-        plugin2._gps = gpsTracker;
-        return plugin2.InitAsync().then( () => {
-            if (throwError) {
-                throw "some error";
-            }
-            
-            gpsTracker.start((loc) => plugin2.OnGpsChanged(loc)); // ignore callback
-            return plugin2;                        
+    // Scan for all <a> with "plugin" class and make into link. 
+    // <a class="plugin">{PluginId}</a>
+    private applyAllPlugins(): void {
+        $("a.plugin").each((idx, e) => {
+            // Text is the 
+            var pluginId: string = e.innerText;
+            var url = this.getGotoLinkForPlugin(pluginId);
+            $(e)
+                .attr("href", this.getGotoLinkForPlugin(pluginId))
+                .attr("target", "_blank");
         });
     }
 
-    private OnGpsChanged(loc : gps.IGeoPoint) : void {
-        // Notification that the GPS position has change. 
-        // Use this if you have a map view showing the user's "current location"
-        var msg = "(Lat: " + loc.Lat + ", Long:" + loc.Long + ")";
-        $("#locInfo").text(msg);
+    // Where <a id="gotoListView" target="_blank">text</a>
+    // $("#gotoListView").attr("href", this.getGotoLinkForPlugin("ListView"));
+    private getGotoLinkForPlugin(pluginId: string): string {
+        if (this._opts == undefined) {
+            return "/"; // avoid a crash
+        }
+        return this._opts.gotoUrl + "/" + this._sheet._sheetId + "/" +
+            pluginId + "/index.html";
+    }
+
+
+    public static BrowserEntryAsync(
+        auth: plugin.IStart,
+        opts: plugin.IPluginOptions
+    ): Promise<MyPlugin> {
+
+        var pluginClient = new plugin.PluginClient(auth, opts,undefined);
+
+        // Do any IO here...
+
+        var throwError = false; // $$$ remove this
+
+        var plugin2 = new MyPlugin(pluginClient);
+
+        plugin2._opts = opts;
+        return plugin2.InitAsync().then(() => {
+            plugin2.applyAllPlugins();
+            return plugin2;
+        });
     }
 
     // Expose constructor directly for tests. They can pass in mock versions. 
-    public constructor(p : plugin.PluginClient) {
+    public constructor(p: plugin.PluginClient) {
         this._sheet = new trcSheet.SheetClient(p.HttpClient, p.SheetId);
     }
-    
+
 
     // Make initial network calls to setup the plugin. 
     // Need this as a separate call from the ctor since ctors aren't async. 
-    private InitAsync() : Promise<void> {
-        return this._sheet.getInfoAsync().then( info  => {
-            this.updateInfo(info);
-        });     
+    private InitAsync(): Promise<void> {
+        return this._sheet.getInfoAsync().then(info => {
+
+            return this._sheet.getChildrenAsync().then(childInfo => {
+
+                // Set styles 
+                document.title = "Voter-Science: " + info.Name;
+
+
+                if (!info.ParentId) {
+                    $(".topLevel").show();
+                } else {
+                    $(".topLevel").hide();
+                }
+
+                if (!!childInfo.entries && childInfo.entries.length > 0) 
+                {
+                    $(".hasChildren").show();
+                } else {
+                    $(".hasChildren").hide();
+                }
+
+                this.updateInfo(info);
+            })
+        });
     }
 
     // Display sheet info on HTML page
@@ -88,32 +120,5 @@ export class MyPlugin {
 
         $("#LastRefreshed").text(new Date().toLocaleString());
     }
-
-    // Example of a helper function.
-    public doubleit(val: number): number {
-        return val * 2;
-    }
-
-    // Demonstrate receiving UI handlers 
-    public onClickRefresh(): void {
-        this.InitAsync().        
-            catch(showError);
-    }
-
-
-    // downloading all contents and rendering them to HTML can take some time. 
-    public onGetSheetContents(): void {
-        trchtml.Loading("contents");
-        //$("#contents").empty();
-        //$("#contents").text("Loading...");
-
-        trcSheetEx.SheetEx.InitAsync(this._sheet, this._gps).then((sheetEx)=>
-        {
-            return this._sheet.getSheetContentsAsync().then((contents) => {
-                var render = new trchtml.SheetControl("contents", sheetEx);
-                // could set other options on render() here
-                render.render();
-            }).catch(showError);
-        });        
-    }
+  
 }

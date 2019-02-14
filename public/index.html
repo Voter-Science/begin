@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 
 <link rel="stylesheet" type="text/css" href="trcgrid.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 <script src="bundle.js"></script>
 <script>
     // plugin startup shim
     var _pluginModule = require('pluginmain');
-    
+
     // Global reference to the current sheet;
     var _plugin = null;
 
@@ -27,18 +31,18 @@
     }
 
     // This is a well-known entry point. It's called by the hosting infrastructure.
-    function PluginMain(sheetRef, opts) {                
+    function PluginMain(sheetRef, opts) {
 
         _pluginModule.MyPlugin.BrowserEntryAsync(sheetRef, opts).then(
-            function(plugin) {
+            function (plugin) {
                 // Success 
-                _plugin = plugin;            
-                $("#_loadingmsg").hide();  
+                _plugin = plugin;
+                $("#_loadingmsg").hide();
                 $("#_mainbody").show(); // activate main controls
             }
-        ).catch(function(error) {
+        ).catch(function (error) {
             // Error case. Display message and Keep main body hiden. 
-            $("#_loadingmsg").hide();  
+            $("#_loadingmsg").hide();
             showError(error);
         });
     }
@@ -46,10 +50,12 @@
 <script src="https://trcanvasdata.blob.core.windows.net/code2/plugin.js"></script>
 
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <title>Basic TRC plugin</title>
+    <title>Voter-Science</title>
 </head>
+
 <body>
     <div id="_loadingmsg">
         <img src="https://trcanvasdata.blob.core.windows.net/code2/loading.gif">
@@ -59,32 +65,140 @@
     <span id="_errorbtn" style="display:none">
         <button onclick="clearError()">Clear error</button>
     </span>
-    <div id="_mainbody"  style="display:none">
-        <p>
-            This is an empty TRC plugin that demonstrates calling PluginMain().
-        </p>
-        <p>
-            See <a href="https://github.com/Voter-Science/TrcLibNpm">https://github.com/Voter-Science/TrcLibNpm</a> for more information on writing plugions.
-        </p>
+    <div id="_mainbody" style="display:none">
+        <div class="container">
 
-        <h2>Basic sheet information:</h2>
-        <table>
-            <tr><td>Name:</td><td><div id="SheetName"></div></td></tr>
-            <tr><td>Parent:</td><td><div id="ParentSheetName"></div></td></tr>
-            <tr><td>Version:</td><td><div id="SheetVer"></div></td></tr>
-            <tr><td>Total Rows:</td><td><div id="RowCount"></div></td></tr>
-            <tr><td>Last refreshed:</td><td><div id="LastRefreshed"></div></td></tr>
-        </table> 
-        <div id="locInfo">
-        </div>
+            What would you like to do? 
+            <a href="https://blog.voter-science.com/canvas/">See Help</a> for more detail.
 
-        <button onclick="_plugin.onClickRefresh()">Refresh!</button>
+            <div class="panel-group">
 
-        <button onclick="_plugin.onGetSheetContents()">GetSheetContents!</button>
-        <div id="contents">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Contact voters
+                    </div>
+                    <div class="panel-body">
+                        <p>Walklist (Classic)</p>
+                        <a class="plugin">listview</a>
 
-        <p>Congratulations! You made your first TRC plugin!</p>
+                        <p>Map (Browser)</p>
+                        <a class="plugin">map</a>
+
+                        <p>Download Mobile App (iOS / Android)</p>
+                        <a href="https://canvas.voter-science.com/fwd/android">
+                            <img width=150 src="https://voterscience.files.wordpress.com/2018/05/google-play.png?w=702" />
+                        </a>
+                        <a href="https://canvas.voter-science.com/fwd/ios">
+                            <img width=150 src="https://voterscience.files.wordpress.com/2018/05/apple-app-store.png?w=702" />
+                        </a>
+
+                        <p>Mailer</p>
+                        <a class="plugin">mailer</a>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Share this data with others
+                    </div>
+
+                    <div class="panel-body">
+                        <a href="https://blog.voter-science.com/2017/05/12/sharing-with-trc">How to share</a>
+
+                        <p>Divide this sheet into sections.</p>
+                        <p>Geofencing- draw regions on a map</p>
+                        <a class="plugin">geofencing.beta</a>
+
+                        <p>Filter - filter by criteria</p>
+                        <a class="plugin">filter</a>
+
+                        <div class="hasChildren">
+                            <p>Share sections:</p>
+                            <a class="plugin">listview</a>
+                        </div>
+
+                        <p>Share this entire sheet with somebody</p>
+                        <a class="plugin">share</a>
+                    </div>
+                </div>
+
+                <div class="topLevel panel panel-default">
+                    <div class="panel-heading">
+                        Data and Targeting
+                    </div>
+                    <div class="panel-body">
+                        <a href="https://blog.voter-science.com/canvass-targeting">How to target.</a>
+                        <p>Filter - filter by criteria</p>
+                        <a class="plugin">filter</a>
+
+                        <p>Upload new columns of data. These can be used in targeting</p>
+                        <a class="plugin">datauploader</a>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Reporting
+                    </div>
+                    <div class="panel-body">
+                        <p>Audit</p>
+                        <a class="plugin">audit</a>
+
+                        <p>Explore Data and Chart</p>
+                        <a class="plugin">filter</a>
+
+                        <p>Demographics</p>
+                        <a class="plugin">demographics</a>
+
+                        <p>Precincts</p>
+                        <a class="plugin">precincts</a>
+
+                        <p>GOTV turnout</p> // if turnout
+                        <a class="plugin">turnout</a>
+                    </div>
+                </div>
+
+                <div class="topLevel panel panel-default">
+                    <div class="panel-heading">
+                        Admin
+                    </div>
+                    <div class="panel-body">
+                        <a class="plugin">adminconnection</a>
+
+                        <h2>Basic sheet information:</h2>
+                        <table>
+                            <tr>
+                                <td>Name:</td>
+                                <td>
+                                    <div id="SheetName"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Parent:</td>
+                                <td>
+                                    <div id="ParentSheetName"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Version:</td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Rows:</td>
+                                <td>
+                                    <div id="RowCount"></div>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Sheet Version - this is incremented with each change.</p>
+                        <div id="SheetVer"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
