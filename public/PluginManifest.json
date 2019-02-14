@@ -1,10 +1,9 @@
 ﻿{
-    // ID must be unique on the gallery
-    "Id": "PluginTemplate",
-    "Name": "An empty plugin",
+    "Id": "begin",
+    "Name": "Getting Started",
     "Author" :  "Voter-Science",
-    "Website" :  "https://github.com/Voter-Science/TRC-API-Samples",
-    "Description": "An empty plugin that just gets the initial login and shows basic sheet properties.",        
-    "Version": "1.0.0", // User SemVer
-    "Tags": [ "demo"  ]
+    "Website" :  "https://github.com/Voter-Science/begin",
+    "Description": "An easy launch page for canvassing and other common plugins.",        
+    "Version": "1.0.0",
+    "Tags": [   ]
 }
