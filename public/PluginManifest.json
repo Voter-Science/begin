@@ -3,7 +3,8 @@
     "Name": "Getting Started",
     "Author" :  "Voter-Science",
     "Website" :  "https://github.com/Voter-Science/begin",
+    "HelpLink" : "https://canvas.voter-science.com/fwd/trc",
     "Description": "An easy launch page for canvassing and other common plugins.",        
     "Version": "1.0.0",
-    "Tags": [   ]
+    "Tags": [ "doorbell", "share", "data", "partition" ]
 }
