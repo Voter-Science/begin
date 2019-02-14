@@ -68,103 +68,228 @@
     <div id="_mainbody" style="display:none">
         <div class="container">
 
-            What would you like to do? 
+            Welcome to Voter-Science Canvasser. What would you like to do?
             <a href="https://blog.voter-science.com/canvas/">See Help</a> for more detail.
 
-            <div class="panel-group">
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Contact voters
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">Contact voters</a>
+                    </h2>
+                </div>
+                <div id="collapse1" class="panel-collapse">
                     <div class="panel-body">
-                        <p>Walklist (Classic)</p>
-                        <a class="plugin">listview</a>
 
-                        <p>Map (Browser)</p>
-                        <a class="plugin">map</a>
+                        <p>Here are several different ways to contact voters. </p>
+                        <p>Use the reporting features to track your outreach efforts.</p>
+                        <p>If you want to apply these outreach tools to just a subset of the rows, use the partition
+                            feature to create a child sheet.</p>
 
-                        <p>Download Mobile App (iOS / Android)</p>
-                        <a href="https://canvas.voter-science.com/fwd/android">
-                            <img width=150 src="https://voterscience.files.wordpress.com/2018/05/google-play.png?w=702" />
-                        </a>
-                        <a href="https://canvas.voter-science.com/fwd/ios">
-                            <img width=150 src="https://voterscience.files.wordpress.com/2018/05/apple-app-store.png?w=702" />
-                        </a>
-
-                        <p>Mailer</p>
-                        <a class="plugin">mailer</a>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/listview/logo.png">
+                                    ListView</h2>
+                                <p>Show list voters all on one page. This is like a <b>digital clipboard</b>. You
+                                    can
+                                    also use this view to <b>print</b>.</p>
+                                <a class="plugin">listview</a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/map/logo.png">
+                                    Map</h2>
+                                <p>Show voters on a map.</p>
+                                <a class="plugin">map</a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2>Mobile App</h2>
+                                <p>Download the mobile app for better offline usage.</p>
+                                <a href="https://canvas.voter-science.com/fwd/android">
+                                    <img width=150 src="https://voterscience.files.wordpress.com/2018/05/google-play.png?w=702" />
+                                </a>
+                                <a href="https://canvas.voter-science.com/fwd/ios">
+                                    <img width=150 src="https://voterscience.files.wordpress.com/2018/05/apple-app-store.png?w=702" />
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/mailer/logo.png">
+                                    Mailer</h2>
+                                <p>Produce a mail list by household.</p>
+                                <a class="plugin">mailer</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Share this data with others
-                    </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse2">Partition and Share this data</a>
+                    </h2>
+                </div>
 
+                <div id="collapse2" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <a href="https://blog.voter-science.com/2017/05/12/sharing-with-trc">How to share</a>
+                        <p>Divide this sheet into sections (aka "child sheets"). Once you create these child sheets,
+                            you can then assign them out to others:</p>
+                        <a href="https://blog.voter-science.com/2017/05/12/sharing-with-trc">Learn more about how to
+                            share.</a>
 
-                        <p>Divide this sheet into sections.</p>
-                        <p>Geofencing- draw regions on a map</p>
-                        <a class="plugin">geofencing.beta</a>
-
-                        <p>Filter - filter by criteria</p>
-                        <a class="plugin">filter</a>
-
-                        <div class="hasChildren">
-                            <p>Share sections:</p>
-                            <a class="plugin">listview</a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Create new child sheets</h2>
+                            </div>
                         </div>
 
-                        <p>Share this entire sheet with somebody</p>
-                        <a class="plugin">share</a>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h3><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/geofencing.beta/logo.png">
+                                    Geofence</h3>
+                                <p>Use a map to geographically draw the area into sub-regions. These sub-regions can
+                                    then be assigned out.</p>
+                                <a plugin="geofencing.beta">Use geofencing</a>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h3><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
+                                    Filter</h3>
+                                <p>Use query expressions to select rows</p>
+                                <a plugin="filter"></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Share child sheets</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-lg-2" class="hasChildren">
+                                <a plugin="listview">Share individual sections</a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <a plugin="share">Share entire sheet</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="topLevel panel panel-default">
-                    <div class="panel-heading">
-                        Data and Targeting
-                    </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse3"> Data and Targeting</a>
+                    </h2>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <a href="https://blog.voter-science.com/canvass-targeting">How to target.</a>
-                        <p>Filter - filter by criteria</p>
-                        <a class="plugin">filter</a>
+                        <p>
+                            If you don't have time to contact every single person in this sheet, then target just
+                            the
+                            subset you want to contact.
+                            Targets get applied to all child sheets.
+                        </p>
+                        <p>
+                            <a href="https://blog.voter-science.com/canvass-targeting">Learn more about targeting.</a>
+                        </p>
 
-                        <p>Upload new columns of data. These can be used in targeting</p>
-                        <a class="plugin">datauploader</a>
+                        <div class="row topLevel">
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
+                                    Filter</h2>
+                                <p>Use query expressions to select a set of targets for this sheet.</p>
+                                <a plugin="filter"></a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/datauploader/logo.png">
+                                    Upload data</h2>
+                                <p>Upload new columns of data. These can either be a set of targets determined
+                                    elsewhere, or it can data used in the filters for setting targets.</p>
+                                <a plugin="datauploader"></a>
+                            </div>
+                        </div>
+
+                        <div class="row notTopLevel">
+                            <div class="col-md-12">
+                                Targeting can only be done at the parent sheet.
+                            </div>
+                        </div>
+
+                        <div hasColumn="XTargetPri">
+                            <div class="alert alert-info">
+                                Targets have been set for this sheet
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Reporting
-                    </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse4"> Reporting</a>
+                    </h2>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <p>Audit</p>
-                        <a class="plugin">audit</a>
 
-                        <p>Explore Data and Chart</p>
-                        <a class="plugin">filter</a>
 
-                        <p>Demographics</p>
-                        <a class="plugin">demographics</a>
+                        <p>
+                            Reporting lets you track progress from your outreach efforts and also get a pulse on
+                            the
+                            data in the sheet.
+                        </p>
 
-                        <p>Precincts</p>
-                        <a class="plugin">precincts</a>
 
-                        <p>GOTV turnout</p> // if turnout
-                        <a class="plugin">turnout</a>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/audit/logo.png">
+                                    Audit</h2>
+                                <p>Primary reporting mechanism for tracking outeach efforts. This lets you see per-user
+                                    per-day activty.</p>
+                                <a plugin="audit"></a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
+                                    Explore Data and Chart</h2>
+                                <p>Explore the data via query expressions and create charts.</p>
+                                <a plugin="filter"></a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/Demographics/logo.png">
+                                    Demo-graphics</h2>
+                                <p>Quick charts on overall demographics of the sheet.</p>
+                                <a plugin="Demographics"></a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2" hasColumn="PrecinctName">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/precinctreport/logo.png">
+                                    precincts</h2>
+                                <p>Quick charts per-precinct information.</p>
+                                <a plugin="precinctreport"></a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2" hasColumn="XVoted">
+                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/turnout/logo.png">
+                                    GOTV Turnout</h2>
+                                <p>View ballot return status and Get-Out-The-Vote information.</p>
+                                <a plugin="turnout"></a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+            </div>
 
-                <div class="topLevel panel panel-default">
-                    <div class="panel-heading">
-                        Admin
-                    </div>
+            <div class="topLevel panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse5"> Admin</a>
+                    </h2>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <a class="plugin">adminconnection</a>
-
                         <h2>Basic sheet information:</h2>
                         <table>
                             <tr>
@@ -182,7 +307,7 @@
                             <tr>
                                 <td>Version:</td>
                                 <td>
-
+                                    <div id="SheetVer"></div>
                                 </td>
                             </tr>
                             <tr>
@@ -192,12 +317,11 @@
                                 </td>
                             </tr>
                         </table>
-                        <p>Sheet Version - this is incremented with each change.</p>
-                        <div id="SheetVer"></div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

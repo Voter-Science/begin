@@ -12,7 +12,6 @@ import * as common from 'trc-httpshim/common'
 import * as core from 'trc-core/core'
 
 import * as trcSheet from 'trc-sheet/sheet'
-import * as trcSheetEx from 'trc-sheet/sheetEx'
 
 import * as plugin from 'trc-web/plugin'
 import * as trchtml from 'trc-web/html'
@@ -27,6 +26,10 @@ declare var $: JQueryStatic;
 //   p.catch(showError);
 declare var showError: (error: any) => void; // error handler defined in index.html
 
+interface IDictionary<T> {
+    [Key: string]: T;
+}
+
 export class MyPlugin {
     private _sheet: trcSheet.SheetClient;
     private _pluginClient: plugin.PluginClient;
@@ -35,11 +38,33 @@ export class MyPlugin {
     // Scan for all <a> with "plugin" class and make into link. 
     // <a class="plugin">{PluginId}</a>
     private applyAllPlugins(): void {
+        $("a[plugin]").each((idx, element) => {
+            // Text is the 
+            var e = $(element);
+            var text: string = element.innerText;
+
+            var pluginId : string = e.attr("plugin");
+
+            if (!text || text.length == 0) {
+                element.innerText = "Use " + pluginId;
+            }           
+
+            var url = this.getGotoLinkForPlugin(pluginId);
+            e
+                .addClass("btn").addClass("btn-primary")
+                .attr("href", this.getGotoLinkForPlugin(pluginId))
+                .attr("target", "_blank");
+        });
+
+        // TODO - remove this case. 
         $("a.plugin").each((idx, e) => {
             // Text is the 
             var pluginId: string = e.innerText;
+            e.innerText = "Use " + pluginId;
             var url = this.getGotoLinkForPlugin(pluginId);
             $(e)
+                .addClass("btn").addClass("btn-primary")
+                .removeClass("plugin")
                 .attr("href", this.getGotoLinkForPlugin(pluginId))
                 .attr("target", "_blank");
         });
@@ -87,7 +112,22 @@ export class MyPlugin {
     private InitAsync(): Promise<void> {
         return this._sheet.getInfoAsync().then(info => {
 
+            var dict : IDictionary<trcSheet.IColumnInfo> =  {} ;
+
+            info.Columns.forEach(c => {
+                dict[c.Name.toLowerCase()] = c;
+            });
+
             return this._sheet.getChildrenAsync().then(childInfo => {
+
+                $("div[hasColumn]").each((idx, element) => {                   
+                    var e = $(element);
+                    var cn = e.attr("hasColumn");
+                    if (!dict.hasOwnProperty(cn.toLowerCase())) {
+                        e.hide();
+                    }
+                });
+
 
                 // Set styles 
                 document.title = "Voter-Science: " + info.Name;
@@ -95,8 +135,10 @@ export class MyPlugin {
 
                 if (!info.ParentId) {
                     $(".topLevel").show();
+                    $(".notTopLevel").hide();
                 } else {
                     $(".topLevel").hide();
+                    $(".notTopLevel").show();
                 }
 
                 if (!!childInfo.entries && childInfo.entries.length > 0) 
