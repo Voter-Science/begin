@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
 
 <link rel="stylesheet" type="text/css" href="trcgrid.css">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
 <script src="bundle.js"></script>
 <script>
@@ -68,10 +69,31 @@
     <div id="_mainbody" style="display:none">
         <div class="container">
 
-            Welcome to Voter-Science Canvasser. What would you like to do?
+            Welcome to Voter-Science Canvasser. 
+
+            <table class="table">
+                <tr>
+                    <td>Sheet Name:</td>
+                    <td>
+                        <div id="SheetName"></div>
+                    </td>
+                </tr>
+                <tr class="notTopLevel">
+                    <td>Parent:</td>
+                    <td>
+                        <div id="ParentSheetName"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total Rows:</td>
+                    <td>
+                        <div id="RowCount"></div>
+                    </td>
+                </tr>
+            </table>
+
+            What would you like to do?
             <a href="https://blog.voter-science.com/canvas/">See Help</a> for more detail.
-
-
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -89,7 +111,8 @@
 
                         <div class="row">
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/listview/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/listview/logo.png">
                                     ListView</h2>
                                 <p>Show list voters all on one page. This is like a <b>digital clipboard</b>. You
                                     can
@@ -97,23 +120,27 @@
                                 <a class="plugin">listview</a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/map/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/map/logo.png">
                                     Map</h2>
                                 <p>Show voters on a map.</p>
-                                <a class="plugin">map</a>
+                                <a plugin="map.all">map</a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
                                 <h2>Mobile App</h2>
                                 <p>Download the mobile app for better offline usage.</p>
                                 <a href="https://canvas.voter-science.com/fwd/android">
-                                    <img width=150 src="https://voterscience.files.wordpress.com/2018/05/google-play.png?w=702" />
+                                    <img width=150
+                                        src="https://voterscience.files.wordpress.com/2018/05/google-play.png?w=702" />
                                 </a>
                                 <a href="https://canvas.voter-science.com/fwd/ios">
-                                    <img width=150 src="https://voterscience.files.wordpress.com/2018/05/apple-app-store.png?w=702" />
+                                    <img width=150
+                                        src="https://voterscience.files.wordpress.com/2018/05/apple-app-store.png?w=702" />
                                 </a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/mailer/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/mailer/logo.png">
                                     Mailer</h2>
                                 <p>Produce a mail list by household.</p>
                                 <a class="plugin">mailer</a>
@@ -130,7 +157,7 @@
                     </h2>
                 </div>
 
-                <div id="collapse2" class="panel-collapse collapse">
+                <div id="collapse2" class="panel-collapse">
                     <div class="panel-body">
                         <p>Divide this sheet into sections (aka "child sheets"). Once you create these child sheets,
                             you can then assign them out to others:</p>
@@ -145,7 +172,8 @@
 
                         <div class="row">
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h3><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/geofencing.beta/logo.png">
+                                <h3><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/geofencing.beta/logo.png">
                                     Geofence</h3>
                                 <p>Use a map to geographically draw the area into sub-regions. These sub-regions can
                                     then be assigned out.</p>
@@ -153,7 +181,8 @@
                             </div>
 
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h3><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
+                                <h3><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
                                     Filter</h3>
                                 <p>Use query expressions to select rows</p>
                                 <a plugin="filter"></a>
@@ -162,12 +191,12 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h2>Share child sheets</h2>
+                                <h2>Share sheets</h2>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 col-md-4 col-lg-2" class="hasChildren">
-                                <a plugin="listview">Share individual sections</a>
+                                <a plugin="listview">View/Share individual sections</a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
                                 <a plugin="share">Share entire sheet</a>
@@ -184,7 +213,7 @@
                         <a data-toggle="collapse" href="#collapse3"> Data and Targeting</a>
                     </h2>
                 </div>
-                <div id="collapse3" class="panel-collapse collapse">
+                <div id="collapse3" class="panel-collapse">
                     <div class="panel-body">
                         <p>
                             If you don't have time to contact every single person in this sheet, then target just
@@ -198,13 +227,22 @@
 
                         <div class="row topLevel">
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
                                     Filter</h2>
                                 <p>Use query expressions to select a set of targets for this sheet.</p>
                                 <a plugin="filter"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/datauploader/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/search/logo.png">
+                                    Search</h2>
+                                <p>Search for an individual name within this sheet.</p>
+                                <a plugin="search"></a>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/datauploader/logo.png">
                                     Upload data</h2>
                                 <p>Upload new columns of data. These can either be a set of targets determined
                                     elsewhere, or it can data used in the filters for setting targets.</p>
@@ -218,7 +256,7 @@
                             </div>
                         </div>
 
-                        <div hasColumn="XTargetPri">
+                        <div hasColumn="row XTargetPri">
                             <div class="alert alert-info">
                                 Targets have been set for this sheet
                             </div>
@@ -233,7 +271,7 @@
                         <a data-toggle="collapse" href="#collapse4"> Reporting</a>
                     </h2>
                 </div>
-                <div id="collapse4" class="panel-collapse collapse">
+                <div id="collapse4" class="panel-collapse">
                     <div class="panel-body">
 
 
@@ -246,32 +284,37 @@
 
                         <div class="row">
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/audit/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/audit/logo.png">
                                     Audit</h2>
                                 <p>Primary reporting mechanism for tracking outeach efforts. This lets you see per-user
                                     per-day activty.</p>
                                 <a plugin="audit"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/filter/logo.png">
                                     Explore Data and Chart</h2>
                                 <p>Explore the data via query expressions and create charts.</p>
                                 <a plugin="filter"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/Demographics/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/Demographics/logo.png">
                                     Demo-graphics</h2>
                                 <p>Quick charts on overall demographics of the sheet.</p>
                                 <a plugin="Demographics"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2" hasColumn="PrecinctName">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/precinctreport/logo.png">
-                                    precincts</h2>
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/precinctreport/logo.png">
+                                    Precincts</h2>
                                 <p>Quick charts per-precinct information.</p>
                                 <a plugin="precinctreport"></a>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-2" hasColumn="XVoted">
-                                <h2><img width="36" height="36" src="https://canvas.voter-science.com/plugin/ignored/turnout/logo.png">
+                                <h2><img width="36" height="36"
+                                        src="https://canvas.voter-science.com/plugin/ignored/turnout/logo.png">
                                     GOTV Turnout</h2>
                                 <p>View ballot return status and Get-Out-The-Vote information.</p>
                                 <a plugin="turnout"></a>
@@ -285,43 +328,22 @@
             <div class="topLevel panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">
-                        <a data-toggle="collapse" href="#collapse5"> Admin</a>
+                        <a data-toggle="collapse" href="#collapse5">Other</a>
                     </h2>
                 </div>
-                <div id="collapse5" class="panel-collapse collapse">
+                <div id="collapse5" class="panel-collapse">
                     <div class="panel-body">
-                        <h2>Basic sheet information:</h2>
-                        <table>
-                            <tr>
-                                <td>Name:</td>
-                                <td>
-                                    <div id="SheetName"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Parent:</td>
-                                <td>
-                                    <div id="ParentSheetName"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Version:</td>
-                                <td>
-                                    <div id="SheetVer"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Total Rows:</td>
-                                <td>
-                                    <div id="RowCount"></div>
-                                </td>
-                            </tr>
-                        </table>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-lg-2">
+                                <p>View other plugins. This shows more advanced features</p>
+                                <a plugin="plugins"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
