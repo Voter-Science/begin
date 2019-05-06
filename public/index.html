@@ -16,6 +16,10 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="jquery.matchHeight.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
     <script src="bundle.js"></script>
     <script>
         // plugin startup shim
@@ -128,24 +132,28 @@
                         <div class="row">
                               <div class="col-sm-6 col-md-3">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-list-ul"></i>
-              										</div>
-                                  <h3>ListView</h3>
-                                  <p>
-                                    Show list voters all on one page. This is like a <strong>digital clipboard</strong>. You can also use this view to <strong>print</strong>.
-                                  </p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-list-ul"></i>
+                										</div>
+                                    <h3>ListView</h3>
+                                    <p>
+                                      Show list voters all on one page. This is like a <strong>digital clipboard</strong>. You can also use this view to <strong>print</strong>.
+                                    </p>
+                                  </div>
               										<a class="plugin">listview</a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-3">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-map-marked-alt"></i>
-              										</div>
-                                  <h3>Map</h3>
-                                  <p>Show voters on a map.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-map-marked-alt"></i>
+                										</div>
+                                    <h3>Map</h3>
+                                    <p>Show voters on a map.</p>
+                                  </div>
               										<a plugin="map.all">Map</a>
               									</div>
                               </div>
@@ -172,11 +180,13 @@
 
                               <div class="col-sm-6 col-md-3">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-envelope"></i>
-              										</div>
-                                  <h3>Mailer</h3>
-                                  <p>Produce a mail list by household.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-envelope"></i>
+                										</div>
+                                    <h3>Mailer</h3>
+                                    <p>Produce a mail list by household.</p>
+                                  </div>
               										<a class="plugin">mailer</a>
               									</div>
                               </div>
@@ -213,22 +223,26 @@
                           <div class="row">
                               <div class="col-sm-6">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-globe"></i>
-              										</div>
-                                  <h3>Geofence</h3>
-                                  <p>Use a map to geographically draw the area into sub-regions. These sub-regions can then be assigned out.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-globe"></i>
+                										</div>
+                                    <h3>Geofence</h3>
+                                    <p>Use a map to geographically draw the area into sub-regions. These sub-regions can then be assigned out.</p>
+                                  </div>
               										<a plugin="geofencing.beta">Use geofencing</a>
               									</div>
                               </div>
 
                               <div class="col-sm-6">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-filter"></i>
-              										</div>
-                                  <h3>Filter</h3>
-                                  <p>Use query expressions to select rows</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-filter"></i>
+                										</div>
+                                    <h3>Filter</h3>
+                                    <p>Use query expressions to select rows</p>
+                                  </div>
               										<a plugin="filter"></a>
               									</div>
                               </div>
@@ -274,35 +288,41 @@
                           <div class="row topLevel">
                               <div class="col-sm-6 col-md-4">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-filter"></i>
-              										</div>
-                                  <h3>Filter</h3>
-                                  <p>Use query expressions to select a set of targets for this sheet.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-filter"></i>
+                										</div>
+                                    <h3>Filter</h3>
+                                    <p>Use query expressions to select a set of targets for this sheet.</p>
+                                  </div>
               										<a plugin="filter"></a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-4">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-search"></i>
-              										</div>
-                                  <h3>Search</h3>
-                                  <p>Search for an individual name within this sheet.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-search"></i>
+                										</div>
+                                    <h3>Search</h3>
+                                    <p>Search for an individual name within this sheet.</p>
+                                  </div>
               										<a plugin="search"></a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-4">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-upload"></i>
-              										</div>
-                                  <h3>Upload data</h3>
-                                  <p>
-                                    Upload new columns of data. These can either be a set of targets determined elsewhere, or it can data used in the filters for setting targets.
-                                  </p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-upload"></i>
+                										</div>
+                                    <h3>Upload data</h3>
+                                    <p>
+                                      Upload new columns of data. These can either be a set of targets determined elsewhere, or it can data used in the filters for setting targets.
+                                    </p>
+                                  </div>
               										<a plugin="datauploader"></a>
               									</div>
                               </div>
@@ -345,55 +365,65 @@
                           <div class="row">
                               <div class="col-sm-6 col-md-3">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-users"></i>
-              										</div>
-                                  <h3>Audit</h3>
-                                  <p>Primary reporting mechanism for tracking outeach efforts. This lets you see per-user per-day activity.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-users"></i>
+                										</div>
+                                    <h3>Audit</h3>
+                                    <p>Primary reporting mechanism for tracking outeach efforts. This lets you see per-user per-day activity.</p>
+                                  </div>
               										<a plugin="audit"></a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-3">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-chart-area"></i>
-              										</div>
-                                  <h3>Explore Data and Chart</h3>
-                                  <p>Explore the data via query expressions and create charts.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-chart-area"></i>
+                										</div>
+                                    <h3>Explore Data and Chart</h3>
+                                    <p>Explore the data via query expressions and create charts.</p>
+                                  </div>
               										<a plugin="filter"></a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-3">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-chart-pie"></i>
-              										</div>
-                                  <h3>Demo-graphics</h3>
-                                  <p>Quick charts on overall demographics of the sheet.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-chart-pie"></i>
+                										</div>
+                                    <h3>Demo-graphics</h3>
+                                    <p>Quick charts on overall demographics of the sheet.</p>
+                                  </div>
               										<a plugin="Demographics"></a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-3" hasColumn="PrecinctName">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="far fa-chart-bar"></i>
-              										</div>
-                                  <h3>Precincts</h3>
-                                  <p>Quick charts per-precinct information.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="far fa-chart-bar"></i>
+                										</div>
+                                    <h3>Precincts</h3>
+                                    <p>Quick charts per-precinct information.</p>
+                                  </div>
               										<a plugin="precinctreport"></a>
               									</div>
                               </div>
 
                               <div class="col-sm-6 col-md-3" hasColumn="XVoted">
                                 <div class="block">
-                                  <div class="icon-wrap small">
-                                    <i class="fas fa-chart-line"></i>
-              										</div>
-                                  <h3>GOTV Turnout</h3>
-                                  <p>View ballot return status and Get-Out-The-Vote information.</p>
+                                  <div class="equal">
+                                    <div class="icon-wrap small">
+                                      <i class="fas fa-chart-line"></i>
+                										</div>
+                                    <h3>GOTV Turnout</h3>
+                                    <p>View ballot return status and Get-Out-The-Vote information.</p>
+                                  </div>
               										<a plugin="turnout"></a>
               									</div>
                               </div>
