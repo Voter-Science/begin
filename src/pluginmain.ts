@@ -51,7 +51,7 @@ export class MyPlugin {
 
             var url = this.getGotoLinkForPlugin(pluginId);
             e
-                .addClass("btn").addClass("btn-blue").addClass("btn-small")
+                .addClass("btn").addClass("btn-green").addClass("btn-small")
                 .attr("href", this.getGotoLinkForPlugin(pluginId))
                 .attr("target", "_blank");
         });
@@ -63,7 +63,7 @@ export class MyPlugin {
             e.innerText = "Use " + pluginId;
             var url = this.getGotoLinkForPlugin(pluginId);
             $(e)
-                .addClass("btn").addClass("btn-blue").addClass("btn-small")
+                .addClass("btn").addClass("btn-green").addClass("btn-small")
                 .removeClass("plugin")
                 .attr("href", this.getGotoLinkForPlugin(pluginId))
                 .attr("target", "_blank");
