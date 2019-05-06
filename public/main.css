@@ -276,6 +276,18 @@ h4 {
   width: 70%;
   padding: 0;
 }
+@media screen and (max-width: 992px) {
+  .panel-body .btn-small {
+    width: 80%;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .panel-body .btn-small {
+    width: 100%;
+    padding: 0;
+  }
+}
 
 .panel-intro {
   margin-bottom: 60px;
