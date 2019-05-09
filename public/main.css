@@ -289,6 +289,35 @@ h4 {
   }
 }
 
+.panel-title .toggle-icon {
+  border-radius: 50%;
+  transition: background 0.2s ease-in-out;
+  width: 26px;
+  height: 26px;
+  float: left;
+  margin-right: 15px;
+  line-height: 26px;
+  color: #fff;
+  text-align: center;
+  background: #54ac45;
+  font-size: 16px;
+}
+
+.panel-title .toggle-icon:before {
+  content: "\f067";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.active .panel-title .toggle-icon {
+  background: #0e76bc;
+}
+
+.active .panel-title .toggle-icon:before {
+  content: "\f068";
+}
+
 .panel-intro {
   margin-bottom: 60px;
 }
