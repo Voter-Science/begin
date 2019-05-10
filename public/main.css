@@ -296,25 +296,34 @@ h4 {
   height: 26px;
   float: left;
   margin-right: 15px;
-  line-height: 26px;
+  line-height: 27px;
   color: #fff;
   text-align: center;
   background: #54ac45;
   font-size: 16px;
 }
 
-.panel-title .toggle-icon:before {
-  content: "\f067";
-  font-family: FontAwesome;
+.fontawesome-icon::before {
+  display: none;
   font-style: normal;
-  font-weight: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel-title .toggle-icon::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f067";
 }
 
 .active .panel-title .toggle-icon {
   background: #0e76bc;
 }
 
-.active .panel-title .toggle-icon:before {
+.active .panel-title .toggle-icon::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f068";
 }
 
