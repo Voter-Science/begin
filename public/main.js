@@ -1,7 +1,5 @@
 $(window).on("load", function() {
-  if($('.block').length) {
-    $('.equal').matchHeight();
-  }
+  $('.equal').matchHeight();
 
   $('.collapse').on('show.bs.collapse', function () {
     $(this).siblings('.panel-heading').addClass('active');
