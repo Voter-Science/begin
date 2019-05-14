@@ -18,7 +18,7 @@
     <script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="jquery.matchHeight.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <!-- <script type="text/javascript" src="main.js"></script> -->
 
     <script src="bundle.js"></script>
     <script>
@@ -59,6 +59,19 @@
                 showError(error);
             });
         }
+
+        $(window).on("load", function() {
+          $('.equal').matchHeight();
+
+          $('.collapse').on('show.bs.collapse', function () {
+            $(this).siblings('.panel-heading').addClass('active');
+          });
+
+          $('.collapse').on('hide.bs.collapse', function () {
+            $(this).siblings('.panel-heading').removeClass('active');
+          });
+        });
+
     </script>
     <script src="https://trcanvasdata.blob.core.windows.net/code2/plugin.js"></script>
 </head>
