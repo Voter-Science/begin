@@ -15,6 +15,7 @@ import * as trcSheet from 'trc-sheet/sheet'
 
 import * as plugin from 'trc-web/plugin'
 import * as trchtml from 'trc-web/html'
+import { SheetTreeViewControl } from './treehelper'
 
 
 // Installed via:
@@ -149,6 +150,9 @@ export class MyPlugin {
                 }
 
                 this.updateInfo(info);
+
+                var tree = new SheetTreeViewControl("treeroot", this._sheet, info);
+                tree.initTree();
             })
         });
     }
