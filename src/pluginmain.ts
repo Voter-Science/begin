@@ -73,11 +73,14 @@ export class MyPlugin {
 
     // Where <a id="gotoListView" target="_blank">text</a>
     // $("#gotoListView").attr("href", this.getGotoLinkForPlugin("ListView"));
-    private getGotoLinkForPlugin(pluginId: string): string {
+    private getGotoLinkForPlugin(pluginId: string, sheetId? : string): string {
+        if (!sheetId) { sheetId = this._sheet._sheetId};
+                
         if (this._opts == undefined) {
-            return "/"; // avoid a crash
-        }
-        return this._opts.gotoUrl + "/" + this._sheet._sheetId + "/" +
+            return "https://canvas.voter-science.com/plugin/" + sheetId  +"/" + pluginId;
+        }        
+
+        return this._opts.gotoUrl + "/" + sheetId + "/" +
             pluginId + "/index.html";
     }
 
@@ -152,9 +155,36 @@ export class MyPlugin {
                 this.updateInfo(info);
 
                 var tree = new SheetTreeViewControl("treeroot", this._sheet, info);
-                tree.initTree();
+                tree.initTree((sheetId)=> this.onTreeNodeSelect(sheetId));
             })
         });
+    }
+
+    
+
+    private onTreeNodeSelect(data : trcSheet.IGetChildrenResultEntry) : void {
+        var name = data.Name;
+        var sheetId = data.Id;
+
+        $("#quickactions").empty();
+
+        var e1 = $("<a>")
+                // .addClass("btn").addClass("btn-green").addClass("btn-small")
+                .addClass("btn").addClass("btn-green")
+                .attr("href", this.getGotoLinkForPlugin("Begin", sheetId))
+                .attr("target", "_blank")
+                .text("Goto '" + name +'\'');
+
+        var e2 = $("<a>")
+                // .addClass("btn").addClass("btn-green").addClass("btn-small")
+                .addClass("btn").addClass("btn-green")
+                .attr("href", this.getGotoLinkForPlugin("Share", sheetId))
+                .attr("target", "_blank")
+                .text("Share '" + name + "'...");
+
+        var space = $("<span>").text("  ");
+
+        $("#quickactions").append(e1).append(space).append(e2);
     }
 
     // Display sheet info on HTML page

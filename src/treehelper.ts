@@ -38,12 +38,13 @@ export class SheetTreeViewControl {
     private readonly _docId: string; // id of the <div> root to host this control in. 
 
     private readonly _autoCol: string; // if set, name of column that this is auto-sharded on. 
-    private static _autoColId: string = "#auto"; // Well known id. 
+    private static _autoColId: string = "#auto"; // Well known id.  '#' prefix means we won't dispatch onSelect.
 
     private _autoIds: IJsTreeNode[]; // child is that are auto-sharded. defer to the "#auto" node. 
 
     // Currently selected node. 
     private _currentSheetId: string;
+    private _onSelect : (sheetRef:trcSheet.IGetChildrenResultEntry)=>void;
 
     // cache from  sheetId to results about that sheet. 
     private _cache: { [sheetId: string]: trcSheet.IGetChildrenResultEntry; } = {};
@@ -66,7 +67,8 @@ export class SheetTreeViewControl {
         }
     }
 
-    public initTree(): void {
+    public initTree(onSelect : (sheetRef:trcSheet.IGetChildrenResultEntry)=>void): void {
+        this._onSelect = onSelect;
         $('#treeroot').jstree({
             'core': {
                 check_callback: true,
@@ -77,7 +79,6 @@ export class SheetTreeViewControl {
 
         $('#treeroot').on("changed.jstree", (e: any, data: any) => {
             var sheetId = data.selected[0];
-            // alert("The selected nodes are:" + data.selected);
             this.selectNode(sheetId);
         });
     }
@@ -90,7 +91,18 @@ export class SheetTreeViewControl {
         if (sheetId == null) {
             return;
         }
-        alert("Selected: " + sheetId);
+
+        if (sheetId[0] == '#')
+        {
+            return; // don't dispatch for dummy nodes. 
+        }
+
+        if (this._onSelect)
+        {            
+            var data = this._cache[sheetId];
+            this._onSelect(data);        
+        }
+        // alert("Selected: " + sheetId);
     }
 
     // populate Tree control
