@@ -2,6 +2,13 @@
 import * as trcSheet from 'trc-sheet/sheet'
 
 
+// Should be in @types/JSTree, but not seem to be
+interface IJsTreeNode {
+    text: string;
+    id: string;
+    children: boolean;
+}
+
 // These should be in trcSheet. 
 interface IShareSheetResult {
 
@@ -30,6 +37,11 @@ export class SheetTreeViewControl {
     private readonly _info: trcSheet.ISheetInfoResult;
     private readonly _docId: string; // id of the <div> root to host this control in. 
 
+    private readonly _autoCol: string; // if set, name of column that this is auto-sharded on. 
+    private static _autoColId: string = "#auto"; // Well known id. 
+
+    private _autoIds: IJsTreeNode[]; // child is that are auto-sharded. defer to the "#auto" node. 
+
     // Currently selected node. 
     private _currentSheetId: string;
 
@@ -43,11 +55,19 @@ export class SheetTreeViewControl {
         this._docId = htmlElementId;
         this._sheet = sheet;
         this._info = info;
+
+        if (info.Topology) {
+            this._autoCol = info.Topology.AutoCreateChildrenForColumnName;
+            this._autoIds = [];
+
+            // Add an "auto-split" node. 
+
+
+        }
     }
-    
+
     public initTree(): void {
-        var jTree: any = $('#treeroot'); // $$$ get d.ts
-        jTree.jstree({
+        $('#treeroot').jstree({
             'core': {
                 check_callback: true,
                 // closure rules. 
@@ -75,19 +95,28 @@ export class SheetTreeViewControl {
 
     // populate Tree control
     // Called at each level to populate the tree
-    private populateTree(node: any, cb: any) {
+    private populateTree(node: IJsTreeNode, cb: (nodes: IJsTreeNode[]) => void) {
         if (node.id === "#") {
             // Root node
             cb([
                 {
-                    "text": this._info.Name,
-                    "id": this._sheet.getId(),
-                    "children": true
+                    text: this._info.Name,
+                    id: this._sheet.getId(),
+                    children: true
                 }]);
         }
         else {
+            if (node.id == SheetTreeViewControl._autoColId) {
+                // Expanding the dummy node we created. 
+                // We already computed these nodes when we first made the 'auto' node. 
+                cb(this._autoIds);
+                return;
+            }
+
             var sheetId: string = node.id;
             var sheet = this._sheet.getSheetById(sheetId);
+
+            var topLevel = (sheetId == this._sheet._sheetId);
 
             var uri = sheet.getUrlBase("/childsummary");
             sheet._http.getAsync<IChildSummaryInfo>(uri).then((summaries) => {
@@ -101,16 +130,29 @@ export class SheetTreeViewControl {
 
                 return sheet.getChildrenAsync().then((children: trcSheet.IGetChildrenResultEntry[]) => {
 
-                    var newNodes: any[] = [];
+                    var newNodes: IJsTreeNode[] = [];
+                    if (topLevel && this._autoCol) {
+                        // Create a  dummy node for grouping the auto-sharded ids. 
+                        newNodes.push({
+                            text: "Auto split by: " + this._autoCol,
+                            id: SheetTreeViewControl._autoColId,
+                            children: true
+                        });
+                    }
+
                     for (var i = 0; i < children.length; i++) {
                         var child = children[i];
                         this._cache[child.Id] = child;
 
-                        //  Include Version, Is Shared. 
+                        var details = this._cache2[child.Id];
 
+                        //  Include Version, Is Shared. 
                         var text = this.computeTitle(child.Id);
 
-                        newNodes.push({
+                        // If this child is auto-sharded, then defer it and place under the dummy node.
+                        var nodeParent = (details.IsAutoShard) ? this._autoIds : newNodes;
+
+                        nodeParent.push({
                             text: text,
                             id: child.Id,
                             children: true
@@ -144,10 +186,16 @@ export class SheetTreeViewControl {
             }
         }
 
-        if (info.Filter != null) {
-            x += " [" + info.Filter + "]";
+        // For auto-sharded, don't bother printing the filter string, since it's just the name.
+        if (!details.IsAutoShard) {
+            if (info.Filter != null) {
+                if (info.Filter.indexOf("IsInPolygon(") >= 0) {
+                    x += " [(geofenced))";
+                } else {
+                    x += " [" + info.Filter + "]";
+                }
+            }
         }
-
 
         return x;
     }
