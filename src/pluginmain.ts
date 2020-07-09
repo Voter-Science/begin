@@ -6,26 +6,12 @@
 // - basic scaffolding for error reporting.
 // This calls TRC APIs and binds to specific HTML elements from the page.
 
-import * as XC from 'trc-httpshim/xclient'
-import * as common from 'trc-httpshim/common'
-
-import * as core from 'trc-core/core'
-
 import * as trcSheet from 'trc-sheet/sheet'
 
 import * as plugin from 'trc-web/plugin'
-import * as trchtml from 'trc-web/html'
 import { SheetTreeViewControl } from './treehelper'
 
-
-// Installed via:
-//   npm install --save-dev @types/jquery
-// requires tsconfig: "allowSyntheticDefaultImports" : true
 declare var $: JQueryStatic;
-
-// Provide easy error handle for reporting errors from promises.  Usage:
-//   p.catch(showError);
-declare var showError: (error: any) => void; // error handler defined in index.html
 
 interface IDictionary<T> {
     [Key: string]: T;
@@ -33,7 +19,6 @@ interface IDictionary<T> {
 
 export class MyPlugin {
     private _sheet: trcSheet.SheetClient;
-    private _pluginClient: plugin.PluginClient;
     private _opts: plugin.IPluginOptions;
 
     // Scan for all <a> with "plugin" class and make into link.
@@ -75,10 +60,10 @@ export class MyPlugin {
     // $("#gotoListView").attr("href", this.getGotoLinkForPlugin("ListView"));
     private getGotoLinkForPlugin(pluginId: string, sheetId? : string): string {
         if (!sheetId) { sheetId = this._sheet._sheetId};
-                
+
         if (this._opts == undefined) {
             return "https://canvas.voter-science.com/plugin/" + sheetId  +"/" + pluginId;
-        }        
+        }
 
         return this._opts.gotoUrl + "/" + sheetId + "/" +
             pluginId + "/index.html";
@@ -160,7 +145,7 @@ export class MyPlugin {
         });
     }
 
-    
+
 
     private onTreeNodeSelect(data : trcSheet.IGetChildrenResultEntry) : void {
         var name = data.Name;
