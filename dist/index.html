@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Voter-Science</title>
+
+    <link
+      rel="stylesheet"
+      href="https://trcanvasdata.blob.core.windows.net/code/pluginglobal.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <script
+      data-search-pseudo-elements
+      defer
+      src="https://use.fontawesome.com/releases/v5.8.1/js/all.js"
+      integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/themes/default/style.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.0.9/jstree.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      var _opts = null;
+    </script>
+
+    <div id="app"></div>
+
+    <!-- Dependencies -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+
+    <!-- Main -->
+    <script src="bundle.js"></script>
+
+    <script src="https://trcanvasdata.blob.core.windows.net/code2/plugin.js"></script>
+    <script>
+      // Well known entry point called by hosting infrastructure
+      function PluginMain(sheetRef, opts) {
+        _opts = opts;
+        window.mainMajor.setSheetRef(sheetRef);
+      }
+    </script>
+  </body>
+</html>
