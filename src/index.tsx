@@ -195,6 +195,34 @@ export class App extends React.Component<{}, IState> {
                   </a>
                 }
               />
+              <PluginCard
+                content={
+                  <p>
+                    Create an online petition to raise awareness on an issue and email voters.
+                  </p>
+                }
+                icon={<img src="http://trcanvasdata.blob.core.windows.net/publicimages/petition-logo2.png" width="68px" height="68px" /> }
+                title="Petition"
+                url={
+                  <a href={"https://canvas.voter-science.com/fwd/trc_petition"} target="_blank">
+                    Create Petition
+                  </a>
+                }
+              />
+            <PluginCard
+                content={
+                  <p>
+                    Fundraiser helps you organize and target your fundraising lists, integrate with latest public data for lobbyists and historical donors, automatically provision and scale to any elected office, and expertly manage call logs from your smartphone. 
+                  </p>
+                }
+                icon={<img src="http://trcanvasdata.blob.core.windows.net/publicimages/trf-logo.png" width="68px" height="68px" /> }
+                title="Fundraiser"
+                url={
+                  <a href={"https://canvas.voter-science.com/fwd/trf"} target="_blank">
+                    Fundraiser
+                  </a>
+                }
+              />
             </CardGrid>
           </>
 
