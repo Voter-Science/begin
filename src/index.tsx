@@ -209,6 +209,8 @@ export class App extends React.Component<{}, IState> {
                   </a>
                 }
               />
+            
+            {false && (
             <PluginCard
                 content={
                   <p>
@@ -223,6 +225,7 @@ export class App extends React.Component<{}, IState> {
                   </a>
                 }
               />
+            )}
             </CardGrid>
           </>
 
@@ -482,6 +485,27 @@ export class App extends React.Component<{}, IState> {
                     </a>
                   }
                 />
+                
+                {!this.context._info.SurveyId ? 
+                (
+                  <PluginCard
+                    content={
+                      <p>Edit Questions. This applies to this sheet and all child sheets.</p>
+                    }
+                    icon={<i className="fas fa-question"></i>}
+                    title="Edit Questions"
+                    url={
+                      <a href={`${this.baseUrl}/editquestions`} target="_blank">
+                        Edit Questions
+                      </a>
+                    }
+                  />                
+                )
+                : 
+                (
+                  <p>This sheet's questions are bound to survey: <pre>{this.context._info.SurveyId}</pre></p>
+                )
+                }
               </CardGrid>
             </>
           ) : null}

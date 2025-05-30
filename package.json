@@ -17,7 +17,7 @@
     "react-dom": "^16.13.1",
     "trc-httpshim": "^1.3.0",
     "trc-react": "^2.7.0",
-    "trc-sheet": "^1.12.0",
+    "trc-sheet": "^1.15.0",
     "trc-web": "^1.3.0"
   },
   "devDependencies": {
